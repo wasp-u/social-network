@@ -1,0 +1,12 @@
+.bio_img{
+    background-image: url(https://cdn-icons-png.flaticon.com/512/147/147144.png);
+    background-position: center center;
+    background-size: cover;
+    width: 150px;
+    height: 150px;
+    margin: 10px;
+}
+.bio{
+    display: flex;
+    align-items: center;
+}
