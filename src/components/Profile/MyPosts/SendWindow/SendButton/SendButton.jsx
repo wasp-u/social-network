@@ -1,8 +1,8 @@
-import classes from './SendButton.module.css';
+import s from './SendButton.module.css';
 
 const SendButton = () => {
     return (
-        <div className={classes.sendbutton}>
+        <div className={s.sendbutton}>
             <button >Send</button>
         </div>
     );

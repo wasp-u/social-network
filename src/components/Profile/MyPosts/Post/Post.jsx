@@ -1,8 +1,8 @@
-import classes from './Post.module.css';
+import s from './Post.module.css';
 
 const Post = (props) => {
     return (
-        <div className={classes.post}>
+        <div className={s.post}>
             <div>{props.text}</div>
             <span>{props.likeCount} likes</span>
         </div>

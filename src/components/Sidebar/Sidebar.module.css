@@ -3,13 +3,34 @@
     flex-flow: column;
     align-items: center;
     grid-area: nav;
-    background-color: rgb(220, 234, 234);
+    border-radius: 10px;
+    font-size: 16px;
 }
-.nav ul{
-    list-style: none;
-    padding-inline-start: 0px;
+
+.side_link{
+    width: 100%;
+    border-radius: 8px;
 }
-.nav a{
-    text-decoration: none;
-    color: black;
+.side_link a{
+    display: flex;
+    color: #3B4153;
+    border-radius: 8px;
+}
+
+.side_link:hover{
+    background:#F2F3F4;
+}
+.side_link img{
+    margin: 18px;
+    height: 24px;
+    width: 24px;
+}
+.hr_line{
+    margin: 20px 0;
+    border: 0;
+    clear:both;
+    display:block;
+    width: 100%;               
+    background-color:#CECFD4;;
+    height: 1px;
 }

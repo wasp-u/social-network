@@ -1,11 +1,11 @@
-import classes from './Bio.module.css';
+import s from './Bio.module.css';
 
 const Bio = () => {
     return (
-        <div className={classes.bio}>
-            <div className={classes.bio_img}></div>
-            <div className={classes.bio_info}>
-                <div className={classes.name}>
+        <div className={s.bio}>
+            <div className={s.bio_img}></div>
+            <div className={s.bio_info}>
+                <div className={s.name}>
                     <p>Yurii Osadchii</p>
                 </div>
                 <div>

@@ -1,13 +1,13 @@
 import Bio from './Bio/Bio';
 import Post from './MyPosts/Post/Post';
 import SendWindow from './MyPosts/SendWindow/SendWindow';
-import classes from './Profile.module.css';
+import s from './Profile.module.css';
 
 
 const Profile = () => {
     return (
-        <div className={classes.content}>
-            <div className={classes.top_img}></div>
+        <div className={s.content}>
+            <div className={s.top_img}></div>
             <Bio />
             <SendWindow />
             <Post text='hello world' likeCount='25' />

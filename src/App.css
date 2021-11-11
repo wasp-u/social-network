@@ -1,11 +1,40 @@
+
+*{
+  box-sizing: border-box;
+  font-family: Poppins;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+body{
+  background-color: #F7F7F8;
+}
 .wrapper{
   margin: 0 auto;
   width: 1200px;
   display: grid;
+}
+
+.wrapper_grid{
   grid-template-areas: 
-  "header header"
   "nav content";
-  grid-template-rows: 60px 1fr;
-  grid-template-columns: 2fr 10fr;
-  grid-gap: 10px;
+  grid-template-columns: 3fr 9fr;
+  grid-gap: 20px;
+}
+.wrapper-content{
+  grid-area: content;
+  height: 90vh;
+}
+textarea{
+  resize: none;
+}
+.nav a.active{
+  background: #FFFFFF ;
+}
+.dialogs a.active>.item{
+  margin: 10px 15px ;
+  background: rgba(136, 109, 246, 0.3);
+  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5);
+
 }

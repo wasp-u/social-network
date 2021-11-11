@@ -1,12 +1,14 @@
 import SendButton from './SendButton/SendButton';
-import classes from './SendWindow.module.css';
+import s from './SendWindow.module.css';
 
 const SendWindow = () => {
     return (
-        <div className={classes.sendwindow}>
+        <div className={s.sendwindow}>
             <p>My Posts</p>
-            <textarea placeholder="your news..." cols="125" rows="5"></textarea>
-            <SendButton />
+            <textarea placeholder="your news..." cols="110" rows="5"></textarea>
+            <div className={s.sendbutton}>
+                <SendButton />
+            </div>
         </div>
     );
 }
