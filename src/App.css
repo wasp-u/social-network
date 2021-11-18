@@ -38,3 +38,12 @@ textarea{
   box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5);
 
 }
+
+@media (max-width: 500px){
+  .wrapper_grid{
+    grid-template-areas: 
+    "nav content";
+    grid-template-columns: 1fr 11fr;
+    grid-gap: 20px;
+  }
+}

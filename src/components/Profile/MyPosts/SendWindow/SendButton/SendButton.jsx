@@ -3,7 +3,7 @@ import s from './SendButton.module.css';
 const SendButton = () => {
     return (
         <div className={s.sendbutton}>
-            <button >Send</button>
+            <button onClick={() => { alert('Hello world') }} >Send</button>
         </div>
     );
 }
