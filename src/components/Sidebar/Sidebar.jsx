@@ -22,12 +22,12 @@ const SideLink = (props) => {
     );
 }
 
-const Sidebar = () => {
+const Sidebar = (props) => {
     return (
         <nav className={'nav ' + s.nav}>
-            <SideLink path="/profile" icon_path={profile_icon} text='My profile' />
+            <SideLink path={`/profile/${props.myId}`} icon_path={profile_icon} text='My profile' />
             <SideLink path="/friends" icon_path={friends_icon} text='Friends' />
-            <SideLink path="/dialog" icon_path={sms_icon} text='Masseges' />
+            <SideLink path="/dialog" icon_path={sms_icon} text='Messages' />
             <SideLink path="/community" icon_path={community_icon} text='Community' />
             <SideLink path="/feed" icon_path={feed_icon} text='Feed' />
             <SideLink path="/settings" icon_path={setting_icon} text='Settings' />
@@ -37,6 +37,7 @@ const Sidebar = () => {
             <SideLink path='s' icon_path={documents_icon} text='Documents' />
             <hr className={s.hr_line} />
             <SideLink path='s' icon_path={covid_icon} text='Covid-19' />
+            <SideLink path='/users' icon_path={covid_icon} text='Users' />
         </nav >
     );
 }

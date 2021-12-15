@@ -4,13 +4,19 @@ import music_logo from './music.svg'
 import notification from './notification.svg'
 import avatar from './avatar.png'
 import arrow_down from './arrow_down.svg'
+import { NavLink } from 'react-router-dom';
 
-const Profile_menu = () => {
+const ProfileMenu = (props) => {
+    const logoutClick = () => {
+        props.logout();
+    }
+
     return (
         <div className={s.profile_menu}>
-            <p>Yurii</p>
+            <p>{props.login}</p>
             <img className={s.avatar} src={avatar} alt="" />
             <img className={s.arrow} src={arrow_down} alt="" />
+            <button onClick={logoutClick}>Logout</button>
         </div>
     );
 }
@@ -46,7 +52,8 @@ const Logo = () => {
 
 
 
-const Header = () => {
+const Header = (props) => {
+
     return (
         <div className={s.header_bg}>
             <header className={"wrapper " + s.header}>
@@ -54,7 +61,10 @@ const Header = () => {
                 <Search />
                 <div className={s.flex_container}>
                     <Buttons />
-                    <Profile_menu />
+                    {props.isAuth
+                        ? <ProfileMenu login={props.data.login} logout={props.logout} />
+                        : <NavLink to='/login'> Login</NavLink>}
+
                 </div>
             </header>
         </div>

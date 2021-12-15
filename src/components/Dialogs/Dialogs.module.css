@@ -33,20 +33,11 @@
     font-weight: 500;
 }
 .textarea{
+    width: 100%;
     display: flex;
-    justify-content: center;
-    padding: 10px;
+    flex-direction: column;
     background: rgb(204, 253, 221);
     border-radius: 10px;
-}
-.textarea textarea{
-    background: rgb(231, 238, 233);
-    border: none;
-    border-radius: 10px;
-    outline-style: none;
-    padding: 10px;
-    height: 100%;
-    width: 100%;
 }
 .message_window{
     overflow: scroll;

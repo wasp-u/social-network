@@ -1,16 +1,19 @@
 import React from 'react';
 import s from './Dialogs.module.css';
-import Dialog_item from './Dialog_item/Dialog_item';
+import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
+import { Navigate } from 'react-router-dom';
+import SendMessageForm from './SendMessageForm';
 
 
 
 const Dialogs = (props) => {
-    let onSendMessageClick = () => {
-        props.onSendMessageClick();
+    const onSubmit = (data) => {
+        props.onSendMessageClick(data.newMessage);
     }
-    let onTextAreaChange = (event) => {
-        props.onTextAreaChange(event.target.value);
+
+    if (!props.isAuth) {
+        return <Navigate to={'/login'} />
     }
     return (
         <div className={s.dialogs}>
@@ -18,7 +21,7 @@ const Dialogs = (props) => {
             <div className={s.dialog_page}>
                 <div className={`dialogs ` + s.dialogs_items}>
                     {props.dialogsPage.dialogs.map(item =>
-                        <Dialog_item
+                        <DialogItem
                             userName={item.userName}
                             userAvatar={item.userAvatar}
                             newestMassage={item.newestMassage}
@@ -40,11 +43,7 @@ const Dialogs = (props) => {
                         )}
                     </div>
                     <div className={s.textarea}>
-                        <textarea
-                            onChange={onTextAreaChange}
-                            value={props.dialogsPage.newMessageText}
-                            placeholder="write your message..."></textarea>
-                        <button onClick={onSendMessageClick} >Send</button>
+                        <SendMessageForm onSubmit={onSubmit} />
                     </div>
                 </div>
             </div>

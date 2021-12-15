@@ -47,3 +47,8 @@ textarea{
     grid-gap: 20px;
   }
 }
+
+.loginError{
+  border: 1px red solid;
+  color: red;
+}

@@ -1,20 +1,5 @@
-.sendwindow {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin: 0 20px;
-}
-.sendwindow textarea{
-    margin: 20px 0;
-}
-.sendwindow p{
-    align-self: flex-start;
-}
-.sendbutton{
-    align-self: flex-end;
-}
-.post{
-    margin: 20px;
-    background: rgba(166, 136, 53, 0.553);
-    border-radius: 10px;
+.sendwindow{
+    padding: 20px;
+    width: 100%;
+    height: 100%;
 }

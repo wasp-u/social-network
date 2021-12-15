@@ -1,15 +1,7 @@
-const CHANGE_NEW_MESSAGE_TEXT = 'CHANGE-NEW-MESSAGE-TEXT';
 const ADD_NEW_MESSAGE = 'ADD-NEW-MESSAGE';
 
-
-export const addMessageActionCreator = () => {
-    return { type: ADD_NEW_MESSAGE };
-}
-export const changeNewMessageTextActionCreator = (text) => {
-    return {
-        type: CHANGE_NEW_MESSAGE_TEXT,
-        newText: text
-    }
+export const addMessageActionCreator = (newMessage) => {
+    return { type: ADD_NEW_MESSAGE, newMessage };
 }
 
 let initialState = {
@@ -33,7 +25,6 @@ let initialState = {
         { userName: "Max", userAvatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', message: "how are you?", id: "7" },
         { userName: "Max", userAvatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png', message: "how are you?", id: "8" },
     ],
-    newMessageText: '',
 }
 
 const dialogsReducer = (state = initialState, action) => {
@@ -42,18 +33,12 @@ const dialogsReducer = (state = initialState, action) => {
             let newMessage = {
                 userName: "Max",
                 userAvatar: 'https://cdn-icons-png.flaticon.com/512/147/147144.png',
-                message: state.newMessageText,
+                message: action.newMessage,
                 id: 9
             }
             return {
                 ...state,
                 messages: [...state.messages, newMessage],
-                newMessageText: '',
-            };
-        case CHANGE_NEW_MESSAGE_TEXT:
-            return {
-                ...state,
-                newMessageText: action.newText
             };
         default: return state;
     }

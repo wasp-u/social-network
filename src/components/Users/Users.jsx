@@ -1,29 +1,47 @@
+import style from "./Users.module.css"
+import emptyAvatar from "./empty-avatar.png"
+import { NavLink } from "react-router-dom";
 
 const Users = (props) => {
-    if (props.users.length === 0) {
-        let users = [
-            { id: 1, followed: false, fullName: 'Max0', status: 'im a boss', location: { city: 'Minsk', country: 'Belarus' } },
-            { id: 2, followed: true, fullName: 'Max1', status: 'im a boss', location: { city: 'Moscow', country: 'Russia' } },
-            { id: 3, followed: false, fullName: 'Max2', status: 'im a boss', location: { city: 'Kyiv', country: 'Ukraine' } },
-            { id: 4, followed: false, fullName: 'Max3', status: 'im a boss', location: { city: 'Minsk', country: 'Belarus' } },
-            { id: 5, followed: true, fullName: 'Max4', status: 'im a boss', location: { city: 'Moscow', country: 'Ukraine' } },
-            { id: 6, followed: true, fullName: 'Max5', status: 'im a boss', location: { city: 'Moscow', country: 'Ukraine' } },
-            { id: 7, followed: true, fullName: 'Max6', status: 'im a boss', location: { city: 'Moscow', country: 'Ukraine' } },
-            { id: 8, followed: false, fullName: 'Max7', status: 'im a boss', location: { city: 'Moscow', country: 'Ukraine' } },]
-
-        props.setUsers(users);
+    let pagesCount = Math.ceil(props.totalUsersCount / props.pageSize);
+    let pages = [];
+    for (let i = 1; i <= pagesCount; i++) {
+        pages.push(i);
     }
+
     return (
-        < div > {
-            props.users.map(user => <div key={user.id}>
-                <div>{user.fullName}</div>
+        < div className={style.users}>
+
+            <div className={style.page_number}>
+                {pages.map(item => {
+                    return (<span key={item}
+                        onClick={() => { props.setCurrentPage(item) }}
+                        className={item === props.currentPage ? style.selected : ''}
+                    >{item}</span>)
+                }
+                )}
+            </div>
+
+            {props.users.map(user => <div key={user.id}>
+                <div>
+                    <NavLink to={'/profile/' + user.id}>
+                        <img src={user.photos.small ? user.photos.small : emptyAvatar} alt="" />
+                    </NavLink>
+                </div>
+
+                <div>{user.name}</div>
                 <div>{user.status}</div>
-                <div>{user.location.city}</div>
+                <div>{"user.location.city"}</div>
+
                 {user.followed
-                    ? <button onClick={() => props.onUnFollowClick(user.id)}>unfollow</button>
-                    : <button onClick={() => props.onFollowClick(user.id)}>follow</button>}
+                    ? <button disabled={props.followingInProgress} onClick={() => {
+                        props.unfollow(user.id)
+                    }}>unfollow</button>
+                    : <button disabled={props.followingInProgress} onClick={() => {
+                        props.follow(user.id)
+                    }}>follow</button>}
             </div>)
-        }</ div>
+            }</ div>
     )
 }
 

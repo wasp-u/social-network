@@ -1,22 +1,18 @@
 import s from './Bio.module.css';
+import Status from './Status';
+import StatusWithHooks from './StatusWithHooks';
 
-const Bio = () => {
+const Bio = (props) => {
     return (
         <div className={s.bio}>
-            <div className={s.bio_img}></div>
+            <div className={s.bio_img}>
+                <img src={props.profile.photos.large} alt="" />
+            </div>
             <div className={s.bio_info}>
                 <div className={s.name}>
-                    <p>Yurii Osadchii</p>
+                    <p>{props.profile.fullName}</p>
                 </div>
-                <div>
-                    <p>Date of Birthd: 21 April</p>
-                </div>
-                <div>
-                    <p>City: Kyiv</p>
-                </div>
-                <div>
-                    <p>Education: KPI</p>
-                </div>
+                <StatusWithHooks status={props.profileStatus} updateProfileStatus={props.updateProfileStatus} />
             </div>
         </div>
     );

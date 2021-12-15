@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPostActionCreator, changeNewPostTextActionCreator } from '../../../../redux/profile_reducer';
+import { addPostActionCreator } from '../../../../redux/profile_reducer';
 import SendWindow from './SendWindow';
 
 let mapStateToProps = (state) => {
@@ -9,12 +9,9 @@ let mapStateToProps = (state) => {
 }
 let mapDispatchToProps = (dispatch) => {
     return {
-        addNewPost: () => {
-            dispatch(addPostActionCreator())
+        addNewPost: (newPost) => {
+            dispatch(addPostActionCreator(newPost))
         },
-        onTextAreaChange: (text) => {
-            dispatch(changeNewPostTextActionCreator(text))
-        }
     }
 }
 
