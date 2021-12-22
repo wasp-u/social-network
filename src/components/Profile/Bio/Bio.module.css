@@ -1,14 +1,41 @@
+.bio_img{
+    position: relative;
+}
 .bio_img img{
     border-radius: 50%;
     width: 150px;
     height: 150px;
     margin: 10px;
 }
-
 .bio{
     display: flex;
     align-items: center;
+    margin-bottom: 10px;
+    background: white;
+    border-radius: 16px;
 }
 .status{
     height: 25px;
+}
+.bio_img input{
+    position: absolute;
+    opacity: 0;
+    z-index: -1;
+}
+.bio_img label{
+    padding: 3px;
+    font-size: 14px;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    z-index: 100;
+    background: rgb(76, 76, 76);
+    color: white;
+    opacity: 0.5;
+    border: none;
+    border-radius: 10px;
+}
+.bio_img label:hover{
+    cursor: pointer;
+    opacity: 0.8;
 }

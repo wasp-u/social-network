@@ -9,7 +9,6 @@
 }
 .item:hover{
     background: rgba(255, 84, 84, 0.409);
-    color: black;
 }
 .item_avatar{
     width: 50px;
@@ -18,4 +17,9 @@
 }
 .item_text p:nth-child(2){
     font-size: 12px;
+}
+.active, .active:hover{
+    margin: 10px 15px ;
+    background: rgba(136, 109, 246, 0.3);
+    box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5);
 }

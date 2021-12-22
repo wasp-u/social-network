@@ -2,10 +2,19 @@ import { connect } from "react-redux";
 import { login } from "../../redux/auth_reducer";
 import LoginForm from "./LoginForm"
 import { Navigate } from 'react-router'
+import { AppStateType } from "../../redux/redux_store";
 
-function Login({ id, isAuth, login }) {
+type MapState = {
+    id: number | null
+    isAuth: boolean
+}
+type MapDispatch = {
+    login: (email: string, password: string, rememberMe: boolean) => void
+}
 
-    const onSubmit = (data) => {
+const Login: React.FC<MapState & MapDispatch> = ({ id, isAuth, login }) => {
+
+    const onSubmit = (data: { email: string, password: string, rememberMe: boolean }) => {
         login(data.email, data.password, data.rememberMe)
     }
 
@@ -23,10 +32,10 @@ function Login({ id, isAuth, login }) {
     }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = (state: AppStateType): MapState => {
     return {
         isAuth: state.auth.isAuth,
-        id: state.auth.data.id
+        id: state.auth.userData.id
     }
 }
 

@@ -1,42 +1,41 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import Profile from './Profile';
-import { getProfile, getProfileStatus, updateProfileStatus } from "../../redux/profile_reducer"
-import { useParams } from 'react-router';
+import { getProfile, getProfileStatus, savePhoto, updateProfileStatus } from "../../redux/profile_reducer"
+import { Navigate, useParams } from 'react-router';
 import { withAuthRedirect } from '../hoc/withAuthRedirect';
 import { compose } from 'redux';
+import { useEffect } from 'react';
 
-class ProfileContainer extends React.Component {
-    componentDidMount() {
-        this.props.getProfile(this.props.userId)
-        this.props.getProfileStatus(this.props.userId);
+
+const ProfileContainer = ({ getProfile, getProfileStatus, ...props }) => {
+    let { userId } = useParams();
+
+    useEffect(() => {
+        getProfile(userId);
+        getProfileStatus(userId);
+    }, [userId])
+
+    if (!userId) {
+        return <Navigate to={`/profile/${props.myID}`} />
     }
-    render() {
-        return (
-            <div>
-                <Profile {...this.props} />
-            </div>
-        );
-    }
+
+    return (
+        <div>
+            <Profile {...props} />
+        </div>
+    )
 }
-
 
 let mapStateToProps = (state) => {
     return {
         profile: state.profilePage.profile,
         profileStatus: state.profilePage.profileStatus,
-
+        myID: state.auth.userData.id
     }
 }
 
-const WithUrlContainerComponent = (props) => {
-    let { userId } = useParams()
-    return (
-        <ProfileContainer {...props} userId={userId} />
-    )
-}
 
 export default compose(
-    connect(mapStateToProps, { getProfile, getProfileStatus, updateProfileStatus }),
+    connect(mapStateToProps, { getProfile, getProfileStatus, updateProfileStatus, savePhoto }),
     withAuthRedirect
-)(WithUrlContainerComponent)
+)(ProfileContainer)

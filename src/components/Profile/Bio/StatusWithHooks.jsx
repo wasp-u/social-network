@@ -6,7 +6,7 @@ const StatusWithHooks = (props) => {
     const [status, setStatus] = useState(props.status);
 
     const activateEditMode = () => {
-        setEditMode(true)
+        props.editSuccess && setEditMode(true)
     }
     const deactivateEditMode = () => {
         setEditMode(false)

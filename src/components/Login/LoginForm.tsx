@@ -1,28 +1,33 @@
-import { Field, reduxForm } from "redux-form"
+import { Field, InjectedFormProps, reduxForm } from "redux-form"
 import { requiredField } from "../../utils/validators/validators";
-import { Input } from "../common/FormControls/FormControls";
+// import { Input } from "../common/FormControls/FormControls";
 
-const LoginForm = ({ handleSubmit, error }) => {
+type LoginFormData = {
+    email: string
+    password: string
+    rememberMe: boolean
+}
+
+const LoginForm: React.FC<InjectedFormProps<LoginFormData>> = ({ handleSubmit, error }) => {
     return (
         <div>
             <form onSubmit={handleSubmit}>
                 <div>
                     <Field placeholder='email...'
                         name='email'
-                        component={Input}
+                        component='input'
                         validate={[requiredField]} />
                 </div>
                 <div>
                     <Field placeholder='password...'
                         name='password'
-                        component={Input}
+                        component='input'
                         type={'password'}
                         validate={[requiredField]} />
                 </div>
                 <div>
                     <Field type="checkbox" name='rememberMe' component={'input'} /> remember me
                 </div>
-                {error ? <div className='loginError'>{error}</div> : <div></div>}
                 <div>
                     <button>Login</button>
                 </div>
@@ -31,7 +36,7 @@ const LoginForm = ({ handleSubmit, error }) => {
     )
 }
 
-const LoginReduxForm = reduxForm({
+const LoginReduxForm = reduxForm<LoginFormData>({
     form: 'login'
 })(LoginForm)
 

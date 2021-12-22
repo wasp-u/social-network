@@ -1,0 +1,20 @@
+.selected{
+    background: rgb(214, 214, 214);
+    font-weight: bold;
+}
+.paginator{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    margin: 10px 0;
+}
+.paginator span{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    border-radius: 10px;
+}
+.paginator span:hover{
+    background: rgb(231, 231, 231);
+    cursor: pointer;
+}

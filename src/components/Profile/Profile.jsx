@@ -3,11 +3,16 @@ import SendWindowContainer from './MyPosts/SendWindow/SendWindowContainer';
 import s from './Profile.module.css';
 
 const Profile = (props) => {
+    // console.log(props);
     return props.profile
         ? (
             <div div className={s.content} >
-                {/* <div className={s.top_img}></div> */}
-                <Bio profile={props.profile} profileStatus={props.profileStatus} updateProfileStatus={props.updateProfileStatus} />
+                <Bio
+                    profile={props.profile}
+                    profileStatus={props.profileStatus}
+                    updateProfileStatus={props.updateProfileStatus}
+                    myID={props.myID}
+                    savePhoto={props.savePhoto} />
                 <SendWindowContainer />
             </div >
         )

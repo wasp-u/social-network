@@ -4,7 +4,7 @@ import Sidebar from "./Sidebar"
 
 let mapStateToProps = (state) => {
     return {
-        myId: state.auth.data.id,
+        myId: state.auth.userData.id,
     }
 }
 export default compose(

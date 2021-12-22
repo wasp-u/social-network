@@ -1,19 +1,19 @@
-import './App.css';
+import './App.scss';
 import SidebarContainer from './components/Sidebar/SidebarContainer';
-import DialogsContainer from './components/Dialogs/DialogsContainer';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import Friends from './components/Friends/Friends';
-import Community from './components/Community/Community';
-import Feed from './components/Feed/Feed';
-import Settings from './components/Settings/Settings';
-import UsersContainer from './components/Users/UsersContainer';
 import ProfileContainer from './components/Profile/ProfileContainer';
 import HeaderContainer from './components/Header/HeaderContainer';
 import Login from './components/Login/Login';
-import React from 'react';
+import React, { Suspense } from 'react';
 import { connect } from 'react-redux';
 import { initializeApp } from './redux/app_reducer';
 
+const Dialogs = React.lazy(() => import('./components/Dialogs/Dialogs'));
+const Friends = React.lazy(() => import('./components/Friends/Friends'));
+const Community = React.lazy(() => import('./components/Community/Community'));
+const Feed = React.lazy(() => import('./components/Feed/Feed'));
+const Settings = React.lazy(() => import('./components/Settings/Settings'));
+const UsersContainer = React.lazy(() => import('./components/Users/UsersContainer'));
 
 class App extends React.Component {
 
@@ -31,18 +31,20 @@ class App extends React.Component {
           <div className="wrapper_grid wrapper">
             <SidebarContainer />
             <div className="wrapper-content">
-              <Routes>
-                <Route path='/' element={<ProfileContainer />} />
-                <Route path='/dialog/*' element={<DialogsContainer />} />
-                <Route path='/profile/:userId' element={<ProfileContainer />} />
-                <Route path='/friends' element={<Friends />} />
-                <Route path='/community' element={<Community />} />
-                <Route path='/feed' element={<Feed />} />
-                <Route path='/settings' element={<Settings />} />
-                <Route path='/users' element={<UsersContainer />} />
-                <Route path='/login' element={<Login />} />
-
-              </Routes>
+              <Suspense fallback={<div>Loading...</div>}>
+                <Routes>
+                  <Route path='/' element={<ProfileContainer />} />
+                  <Route path='/dialog/*' element={<Dialogs />} />
+                  <Route path='/profile/:userId' element={<ProfileContainer />} />
+                  <Route path='/friends' element={<Friends />} />
+                  <Route path='/community' element={<Community />} />
+                  <Route path='/feed' element={<Feed />} />
+                  <Route path='/settings' element={<Settings />} />
+                  <Route path='/users' element={<UsersContainer />} />
+                  <Route path='/login' element={<Login />} />
+                  <Route path='*' element={<div>404 NOT FOUND</div>} />
+                </Routes>
+              </Suspense>
             </div>
           </div>
         </BrowserRouter>

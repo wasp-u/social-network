@@ -3,7 +3,11 @@ import { maxLength, requiredField } from "../../utils/validators/validators";
 import { Textarea } from "../common/FormControls/FormControls";
 const maxLength10 = maxLength(10);
 
-const SendMessage = (props) => {
+// type PropsType = {
+//     handleSubmit: () => void
+// }
+
+const SendMessage = (props: any) => {
     return (
         <div>
             <form onSubmit={props.handleSubmit}>

@@ -1,0 +1,36 @@
+@mixin flexible_center {
+    width: 100%;
+    display: flex;
+    align-items: center;
+}
+
+.profilePhoto img{
+    width: 70px;
+    border-radius: 50%;
+}
+.profilePhoto{
+    padding: 10px;
+}
+.profileInfoWithoutPhoto{
+    @include flexible_center();
+    justify-content: space-between;
+}
+.userCard {
+    @include flexible_center();
+    margin-top: 10px;
+    background: rgb(238, 238, 238);
+    height: 100px;
+    border-radius: 16px;
+    padding: 10px;
+    button{
+        height: 40px;
+        background: rgb(212, 212, 212);
+        border-radius: 10px;
+        border: none;
+        padding: 10px;
+        &:hover{
+            cursor: pointer;
+            background: rgb(188, 188, 188);
+        }
+    }
+}

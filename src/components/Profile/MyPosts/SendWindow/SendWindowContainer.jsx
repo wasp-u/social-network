@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { addPostActionCreator } from '../../../../redux/profile_reducer';
+import { profile_actions } from '../../../../redux/profile_reducer';
 import SendWindow from './SendWindow';
 
 let mapStateToProps = (state) => {
@@ -7,14 +7,7 @@ let mapStateToProps = (state) => {
         profilePage: state.profilePage
     }
 }
-let mapDispatchToProps = (dispatch) => {
-    return {
-        addNewPost: (newPost) => {
-            dispatch(addPostActionCreator(newPost))
-        },
-    }
-}
 
-const SendWindowContainer = connect(mapStateToProps, mapDispatchToProps)(SendWindow);
+const SendWindowContainer = connect(mapStateToProps, { addNewPost: profile_actions.addPostActionCreator })(SendWindow);
 
 export default SendWindowContainer;

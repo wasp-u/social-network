@@ -1,4 +1,4 @@
-
+$app_bg_color: #F7F7F8;
 *{
   box-sizing: border-box;
   font-family: Poppins;
@@ -8,7 +8,7 @@ a{
   color: black;
 }
 body{
-  background-color: #F7F7F8;
+  background-color: $app_bg_color;
 }
 .wrapper{
   margin: 0 auto;
@@ -29,14 +29,10 @@ body{
 textarea{
   resize: none;
 }
-.nav a.active{
-  background: #FFFFFF ;
-}
-.dialogs a.active>.item{
-  margin: 10px 15px ;
-  background: rgba(136, 109, 246, 0.3);
-  box-shadow: inset 2px 2px 5px rgba(154, 147, 140, 0.5);
-
+.nav {
+  a.active{
+    background: #FFFFFF ;
+  }
 }
 
 @media (max-width: 500px){

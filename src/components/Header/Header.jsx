@@ -53,7 +53,6 @@ const Logo = () => {
 
 
 const Header = (props) => {
-
     return (
         <div className={s.header_bg}>
             <header className={"wrapper " + s.header}>
